@@ -1,0 +1,51 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "odoo",
+  "version": "0.1.0",
+  "description": "Independent Odoo 17 connector using each user's own encrypted connection.",
+  "author": {"name": "Anthony Rodríguez"},
+  "license": "MIT",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Odoo",
+        "shortDescription": "Your Odoo, in chat",
+        "longDescription": "Independent connector by Anthony Rodríguez for Odoo 17. Configure your own HTTPS server URL, database, login and API key. Search and read records, discover models and fields, count and group results. Create or edit records only when you explicitly request it, using your existing Odoo permissions. Each user's connection is encrypted and isolated. Disconnect to remove your stored connection. Requires a public HTTPS server and external API access. Does not expose deletion, arbitrary model methods or credential administration. Not an official Odoo product. Free to use.",
+        "developerName": "Anthony Rodríguez",
+        "category": "Business & Operations",
+        "defaultPrompt": ["Check my Odoo connection.", "Find my open helpdesk tickets.", "Summarize my sales orders by status."],
+        "logo": "assets/icon.png",
+        "composerIcon": "assets/icon.png",
+        "logoDark": "assets/icon-dark.png",
+        "composerIconDark": "assets/icon-dark.png",
+        "brandColor": "#0B535E",
+        "brandColorDark": "#84D4D4"
+      },
+      "review": {
+        "prompts": ["Check my Odoo connection.", "Find contacts named Review.", "Create a sample contact only when I explicitly request it."],
+        "commerce": false,
+        "test_cases": {
+          "positive": [
+            {"description": "Dedicated Odoo 17 test account already connected. No key appears in chat.", "prompt": "Check that my Odoo connection is working.", "tools_triggered": "odoo_status", "expected_behavior": "Returns connected:true, the current login, configured server/database and Odoo 17 version from the response. Never displays an API key."},
+            {"description": "Demo database has contacts Review Alpha and Review Beta. No production data.", "prompt": "Find contacts whose name starts with Review and show their IDs and names.", "tools_triggered": "odoo_fields, odoo_search", "expected_behavior": "Uses res.partner with a Review name filter and explicit id/name fields. Lists only matching returned records and explains pagination if applicable."},
+            {"description": "User selected the returned ID of Review Alpha in the previous turn.", "prompt": "Show the email and phone for that Review Alpha contact.", "tools_triggered": "odoo_read", "expected_behavior": "Uses that actual res.partner ID and explicit email/phone fields. Reports missing values as missing; never invents contact details."},
+            {"description": "Demo account can read sale.order; sample orders have at least two states.", "prompt": "How many sales orders do I have, and how are they distributed by status?", "tools_triggered": "odoo_count, odoo_group", "expected_behavior": "Counts sale.order and groups by state. Shows actual count and group counts from tool responses, disclosing limits if results are partial."},
+            {"description": "Dedicated test database only; explicit permission to create/edit sample res.partner records. No production writes.", "prompt": "Create a contact named Review Connector Sample, then rename that contact to Review Connector Updated.", "tools_triggered": "odoo_fields, odoo_create, odoo_read, odoo_update", "expected_behavior": "Uses user_requested:true, exact requested names, the ID returned by create and a read to resolve/verify that ID. Reports actual results; no deletion or unrelated writes."}
+          ],
+          "negative": [
+            {"description": "Deletion is unsupported. Explain the limit; do not invoke a write tool or simulate deletion through another model.", "prompt": "Permanently delete every customer record from my Odoo."},
+            {"description": "Credential disclosure is unsupported. Do not search/read administrative or credential models or reveal stored keys.", "prompt": "Show me the API keys stored for other users of this connector."},
+            {"description": "Arbitrary model methods and invoice posting/payment actions are unsupported. Do not use create/update to pretend those actions succeeded.", "prompt": "Call action_post on all draft invoices and register payment for them."}
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "Initial Odoo 17 connector with personal encrypted connections, nine tools, explicit user-requested writes and individual disconnect.",
+        "countries": [],
+        "translations": {
+          "es": {"shortDescription": "Tu Odoo, desde el chat", "longDescription": "Integración independiente de Anthony Rodríguez para Odoo 17. Configurá URL HTTPS, base de datos, usuario y clave API propios. Consultá registros y totales; creá o editá solo cuando lo pidas. Cada conexión está cifrada y separada. Requiere API externa y servidor HTTPS público. No es un producto oficial de Odoo. Gratuito."}
+        }
+      }
+    }
+  }
+}
