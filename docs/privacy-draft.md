@@ -1,13 +1,23 @@
-# Privacidad — borrador para revisión del creador
+# Política de privacidad de Odoo
 
-Proyecto: Odoo. Creador: Anthony Rodríguez. Contacto previsto: anthony@nst-group.com.
+Propuesta del 21 de octubre de 2026 para aprobación del creador; todavía no publicada como política definitiva.
 
-El conector usa la identidad de la sesión autenticada de ChatGPT para separar las conexiones personales. Al configurar una cuenta recibe URL del servidor, base de datos, usuario de Odoo y clave API. La conexión se comprueba contra el servidor HTTPS elegido y se guarda cifrada con AES-256-GCM para solicitudes posteriores de esa misma persona.
+El responsable de este conector independiente es Anthony Rodríguez, Uruguay. Contacto para privacidad y soporte: anthony@nst-group.com. No es un producto oficial de Odoo.
 
-Al consultar o modificar registros, el servidor del conector envía la solicitud a la instancia de Odoo configurada y devuelve el resultado al chat. Las respuestas pueden contener datos personales o comerciales de esa instancia. El código de la aplicación no crea una copia persistente de esos resultados ni registra intencionadamente claves o contenido de registros en sus logs.
+## Datos y finalidad
 
-El almacenamiento activo conserva la conexión hasta que la persona la reemplaza o utiliza Desconectar. Esta acción elimina la fila activa del conector; no revoca por sí misma la clave en Odoo. La revocación debe hacerse en Odoo.
+La identidad de la sesión de ChatGPT se utiliza para separar las conexiones personales. Al configurar el conector se reciben URL pública HTTPS del servidor Odoo, base de datos, usuario y clave API. Estos datos permiten comprobar la cuenta y ejecutar las operaciones que la persona solicita sobre su propia instancia. La conexión se guarda cifrada con AES-256-GCM, vinculada a su propietario. La clave no se devuelve al chat ni a otros usuarios.
 
-El servicio utiliza infraestructura de Sites/OpenAI y Cloudflare. La resolución DNS de los dominios configurados se consulta a Cloudflare. Las políticas y retención operativa/respaldos de esos proveedores deben confirmarse antes de finalizar esta política. No se afirma un plazo de eliminación de respaldos que no se haya verificado.
+Las consultas y acciones se envían al servidor Odoo elegido por la persona. Los resultados vuelven al chat y pueden contener datos personales o comerciales. La aplicación no crea una base persistente con el contenido de esos resultados. No incorpora publicidad ni un mecanismo de venta de los datos de las conexiones. El código no registra intencionadamente claves ni contenido de los registros.
 
-Pendiente de definir: datos legales del responsable, derechos y canal de solicitudes aplicables, jurisdicción, cobertura de menores, retención de logs/respaldos, cambios en esta política y condiciones adicionales. Este documento no es una política publicada ni una declaración lista para la revisión del catálogo.
+Antes de publicar una respuesta o nota se muestra el borrador para aprobación. Las notificaciones posteriores dependen de Odoo y de los destinatarios y seguidores del registro. Aprobar una respuesta no autoriza por sí solo el cierre del ticket.
+
+## Proveedores y conservación
+
+El servicio funciona sobre Sites/OpenAI y Cloudflare. Cloudflare recibe consultas DNS sobre los dominios configurados. El tratamiento realizado por ChatGPT, Odoo y los proveedores de infraestructura también depende de sus condiciones y configuraciones. Sus registros operativos, copias de seguridad y plazos propios de conservación no se eliminan mediante el botón del conector y no se promete aquí un plazo de eliminación que no se haya verificado.
+
+La conexión activa permanece hasta que se reemplaza o se utiliza Desconectar. Desconectar elimina su fila activa del servicio; no revoca la clave en Odoo ni elimina registros ya creados, mensajes publicados, conversaciones de ChatGPT o copias de seguridad de los proveedores. Para revocar una clave hay que hacerlo también en Odoo.
+
+## Solicitudes y cambios
+
+Las solicitudes relativas a los datos tratados por el conector pueden dirigirse a anthony@nst-group.com, sin enviar claves ni datos innecesarios de clientes. Para datos almacenados en la propia instancia Odoo o en ChatGPT, también corresponde utilizar los controles y canales del respectivo servicio. Esta política se actualizará en la web del proyecto cuando cambien sus prácticas.
