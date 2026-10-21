@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "odoo",
-  "version": "0.2.0",
-  "description": "Independent Odoo 17 connector using each user's own encrypted connection.",
+  "version": "0.3.0",
+  "description": "Independent local Odoo 17 connector for Windows desktop. Each user supplies and protects their own connection.",
   "author": {
     "name": "Anthony Rodríguez"
   },
@@ -12,7 +12,7 @@
       "interface": {
         "displayName": "Odoo",
         "shortDescription": "Your Odoo, in chat",
-        "longDescription": "Independent connector by Anthony Rodríguez for Odoo 17. Configure your own public HTTPS server URL, database, login and API key. Search records, discover fields, read ticket history, count and group results. Create, edit or delete specific records and execute public business actions only at your request, subject to your Odoo permissions. Customer replies and internal notes are shown as drafts for your explicit approval before posting. If a ticket appears resolved, closing it is proposed for separate approval. Odoo controls notifications; posting does not confirm email delivery. Each connection is encrypted and isolated. Disconnect removes the active stored connection. Does not expose credential or permission administration, code execution or privilege escalation. Requires external API access. Not an official Odoo product. Free to use.",
+        "longDescription": "Independent Odoo 17 connector by Anthony Rodríguez for compatible Windows desktop clients. Requires Node.js 24 or later. Runs locally on the user PC and connects directly to the public HTTPS Odoo server they configure. Enter server URL, database, login and API key in a private 127.0.0.1 form. Credentials are protected for the Windows user with DPAPI; there is no shared connector service or credential database. Search records, read ticket history and perform explicitly requested create/update/delete and business actions with existing Odoo permissions. Show customer replies/internal notes for explicit draft approval before posting. Propose ticket closure for separate explicit approval. Posting does not prove email delivery. Data returned in chat is processed by the chat service normally. No credential administration or privilege escalation. Free, MIT source. Not an official Odoo product.",
         "developerName": "Anthony Rodríguez",
         "category": "Business & Operations",
         "defaultPrompt": [
@@ -86,12 +86,12 @@
         }
       },
       "publication": {
-        "release_notes": "Odoo 17 connector with 14 tools, ticket history, approved customer replies/internal notes, requested business actions and record deletion. Every outgoing message requires draft approval; ticket closure is proposed for explicit approval. Personal encrypted four-field connections remain isolated.",
+        "release_notes": "GitHub desktop distribution for Windows, Node.js 24+, local MCP execution, per-user DPAPI-protected configuration, 14 Odoo tools, explicit draft approval and separate ticket-closure approval. Does not use the previous hosted connector.",
         "countries": [],
         "translations": {
           "es": {
             "shortDescription": "Tu Odoo, desde el chat",
-            "longDescription": "Integración independiente de Anthony Rodríguez para Odoo 17. Configurá URL HTTPS, base, usuario y clave API propios. Consultá datos e historial; creá, editá, eliminá y ejecutá acciones con tus permisos, a pedido. Las respuestas y notas se muestran para aprobar antes de publicarlas. Si corresponde cerrar un ticket, se propone para aprobación explícita. Cada conexión está cifrada y separada. Odoo gestiona las notificaciones; publicar no confirma recepción. Requiere API externa y servidor público. No es un producto oficial de Odoo. Gratuito."
+            "longDescription": "Conector independiente de Anthony Rodríguez para Odoo 17, Windows y Node.js 24 o posterior. Se ejecuta en la PC de cada persona y conecta directamente a su Odoo HTTPS público. URL, base, usuario y clave se ingresan en un formulario 127.0.0.1; Windows DPAPI protege la conexión para ese usuario. Consultas e historial; creación, edición, eliminación y acciones a pedido con los permisos existentes. Muestra respuestas/notas para aprobar antes de publicar y propone el cierre del ticket para aprobación separada. Los datos que aparecen en el chat se procesan normalmente por ChatGPT/Codex. Gratuito, código MIT, no oficial de Odoo."
           }
         }
       }

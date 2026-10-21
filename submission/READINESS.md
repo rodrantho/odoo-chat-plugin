@@ -1,5 +1,13 @@
 # Public release preparation — 2026-10-21
 
+## Current decision: local GitHub distribution, version 0.3.0
+
+The creator chose GitHub distribution and declined to continue publisher verification/billing. No OpenAI public-directory submission is being pursued. The current installable package is `submission/odoo`, registered by `.agents/plugins/marketplace.json`. It runs as a Windows local stdio MCP process with Node.js 24+, four-field loopback settings and DPAPI CurrentUser credential protection. It does not use the historical hosted endpoint below. See [installation](../docs/github-install.md) and [security scope](../docs/local-security.md).
+
+Windows profiles separate local configurations; changing ChatGPT accounts within one Windows profile does not. Record data returned to chat still follows the chat service and Odoo processing. Automated fictional-data tests cover the 14 tools, draft approval, DPAPI, loopback controls and actual stdio child-process discovery. No production write or customer notification was tested. Historical reviewer/demo requirements below are not claims that those materials exist or are required for the GitHub installation.
+
+The remaining sections record the earlier hosted submission proposal. Their runtime versions, policies, account-isolation model and portal status are historical, not the current local package behavior.
+
 ## Confirmed by the creator
 
 - Display name: Odoo.

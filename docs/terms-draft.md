@@ -1,5 +1,7 @@
 # Condiciones de uso de Odoo
 
+> Borrador histórico de la propuesta de servicio alojado; no son condiciones publicadas para la distribución local 0.3.0 desde GitHub. El software actual se ofrece bajo [MIT](../LICENSE), con [instrucciones de instalación](github-install.md) y [alcance de seguridad local](local-security.md).
+
 Propuesta del 21 de octubre de 2026 para aprobación del creador; todavía no publicada como condiciones definitivas.
 
 Odoo es un conector independiente y gratuito creado por Anthony Rodríguez, Uruguay. Soporte y consultas: anthony@nst-group.com. No existe afiliación ni respaldo oficial de Odoo. Su código fuente se ofrece bajo la licencia MIT incluida en el repositorio.

@@ -1,5 +1,7 @@
 # Política de privacidad de Odoo
 
+> Documento histórico de la propuesta de servicio alojado. No describe la distribución local 0.3.0 desde GitHub y no se publica como política vigente. Para la distribución actual consultá [el alcance de seguridad local](local-security.md) y [la instalación](github-install.md): las credenciales pertenecen al perfil Windows, no a la sesión de ChatGPT.
+
 Propuesta del 21 de octubre de 2026 para aprobación del creador; todavía no publicada como política definitiva.
 
 El responsable de este conector independiente es Anthony Rodríguez, Uruguay. Contacto para privacidad y soporte: anthony@nst-group.com. No es un producto oficial de Odoo.

@@ -5,7 +5,7 @@ description: Usar Odoo para consultar, gestionar y responder tickets, publicar n
 
 # Operar Odoo
 
-Usar la conexión personal del usuario. Cada persona configura su propia URL, base de datos, usuario y clave API; no compartir conexiones entre personas.
+Usar Odoo desde el catálogo GitHub. Su proceso MCP se ejecuta localmente en Windows y conecta directamente a la instancia del usuario. Cada persona configura URL, base, usuario y clave API en el formulario 127.0.0.1 que devuelve odoo_status. La clave se protege mediante Windows DPAPI y nunca se pide por chat. Verificar execution local-windows y connector_version 0.3.0 o posterior. No usar el antiguo servicio alojado.
 
 ## Identidad y autorización
 
