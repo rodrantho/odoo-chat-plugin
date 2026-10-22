@@ -1,17 +1,11 @@
-# Conexión por cuenta y uso entre dispositivos
+# Una instancia privada por usuario
 
-La versión 0.4 utiliza el servidor remoto de Odoo. Sites autentica al usuario y entrega una identidad verificada al servicio. Las consultas y la configuración utilizan esa identidad; el cliente no puede elegir otro propietario por parámetros.
+Cada persona genera su propio sitio en su cuenta de Sites, su almacenamiento, secreto de cifrado y complemento. Por defecto el acceso es solo del propietario. La plantilla pública no tiene endpoint MCP fijo ni proyecto, App, conexión, clave o colaborador preconfigurados.
 
-Ingresás URL HTTPS de Odoo 17, base, usuario y clave API en el formulario HTTPS del conector. La configuración se guarda cifrada con AES-256-GCM y datos autenticados vinculados al propietario. Se rechazan solicitudes sin identidad, cambios de propietario y modificaciones del formulario desde otro origen. Cada llamada conserva los permisos de la cuenta Odoo. No se elevan privilegios.
+El autor no administra un servicio central ni recibe acceso a las instancias creadas. La conexión utiliza el Site de su propietario y su servidor Odoo. La clave se guarda cifrada con AES-256-GCM en el almacenamiento de esa instancia, bajo un secreto generado exclusivamente para ella y ligada a la identidad autenticada. Nunca se copia el secreto de otra instalación.
 
-La conexión puede usarse desde clientes compatibles con el servidor remoto y esa cuenta autenticada, sin depender de una PC encendida ni de Windows. Debe verificarse la compatibilidad y conexión en cada superficie; no se promete instalación automática en todos los dispositivos. Descargar el repositorio desde GitHub no instala ni sincroniza una conexión en la cuenta por sí solo.
+Sites/OpenAI y su infraestructura siguen alojando el sitio; Odoo procesa sus operaciones y el servicio de chat procesa los resultados devueltos. El código consulta DNS público de Cloudflare para validar el dominio. No se promete aislamiento frente a los proveedores de la plataforma o administradores que el propietario decida autorizar. Mantener el sitio privado y no compartirlo es parte de esta instalación.
 
-**No es un almacén de claves dentro de ChatGPT.** Las credenciales están cifradas en la infraestructura del servicio del complemento. El operador administra la infraestructura y el secreto de cifrado, por lo que no es cifrado de extremo a extremo frente al operador. OpenAI/Sites, su infraestructura y Odoo intervienen en el tratamiento. Cloudflare recibe consultas DNS sobre el dominio Odoo para validar destinos públicos. Los datos devueltos al chat se procesan por el servicio de chat.
+No hay telemetría, registro de instalaciones ni envío de credenciales hacia el autor. GitHub entrega código e instrucciones, no recibe las claves Odoo. Cada propietario aplica por su cuenta las actualizaciones que quiera a su instancia; el autor no tiene acceso para hacerlo en sitios ajenos.
 
-No introducir claves en prompts, código, repositorios ni tareas programadas. El conector no devuelve la clave en herramientas ni permite consultarla. Los informes públicos deben usar datos ficticios.
-
-Desconectar elimina la conexión activa del servicio; no revoca la clave Odoo, no borra chats ni deshace operaciones o copias de seguridad de proveedores. Para revocar la clave, usar Odoo. No prometemos un plazo de borrado de respaldos no verificado.
-
-La versión local 0.3 anterior guardaba por perfil Windows, no por cuenta ChatGPT. Su archivo local no se migra ni se sube automáticamente: hay que configurar explícitamente la conexión alojada. El arnés local permanece solo para desarrollo y pruebas.
-
-El directorio oficial de OpenAI y la distribución GitHub son rutas diferentes. Esta actualización no es una aprobación ni publicación en ese directorio. La compatibilidad web/móvil de una instalación concreta debe comprobarse en el cliente.
+Desconectar elimina la conexión activa de esa instancia. No revoca la clave en Odoo ni borra mensajes, chats o copias de seguridad de proveedores. La revocación se hace en Odoo. La compatibilidad desde otro dispositivo requiere la misma cuenta y un cliente compatible; no se presupone por descargar el repositorio.

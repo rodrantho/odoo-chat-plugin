@@ -5,7 +5,7 @@ description: Usar Odoo para consultar, gestionar y responder tickets, publicar n
 
 # Operar Odoo
 
-Usar la conexión alojada personal del usuario. Cada persona configura URL, base, usuario y clave API en el formulario HTTPS que devuelve odoo_status. El servicio conserva la conexión cifrada por identidad autenticada de ChatGPT; no se guarda literalmente dentro de la cuenta de ChatGPT. Nunca pedir claves por chat. La compatibilidad entre dispositivos depende del cliente y su conexión remota. Verificar la versión real del servidor antes de anunciar capacidades nuevas.
+Usar exclusivamente el plugin de la instancia privada creada en la cuenta del usuario. Si todavía no existe, seguir ../instalar-odoo/SKILL.md. No conectar a sitios del autor, servicios compartidos ni instancias de otros usuarios. Cada instalación tiene sitio, almacenamiento y secreto propios. La configuración se ingresa solo en el formulario HTTPS de esa instancia. Verificar propiedad y acceso privado durante la configuración y la versión real al operar. Nunca pedir claves por chat.
 
 ## Identidad y autorización
 

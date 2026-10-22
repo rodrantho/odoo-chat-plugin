@@ -1,5 +1,6 @@
 # Alcance de seguridad de la versión local
 
+> Antecedente histórico de versiones previas. La versión 0.5 usa una instancia privada independiente por instalación: ver [instalación](github-install.md) y [separación de instancias](cloud-connection.md). Este documento no define el servicio actual.
 > Referencia histórica de la versión local 0.3 y del arnés opcional de desarrollo. El paquete instalado 0.4 utiliza [la conexión remota por cuenta](cloud-connection.md).
 
 - La configuración pertenece al perfil Windows de quien instala. DPAPI CurrentUser protege el archivo local; otro perfil Windows no puede abrirlo con su propia identidad. Una persona que controle tu sesión Windows o tu equipo puede comprometer tus datos: esto no es una garantía de seguridad absoluta.

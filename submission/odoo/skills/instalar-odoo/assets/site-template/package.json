@@ -1,0 +1,14 @@
+{
+  "name": "odoo-personal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:generate": "drizzle-kit generate"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4",
+    "drizzle-orm": "^0.44.5"
+  },
+  "author": "Anthony Rodríguez",
+  "license": "MIT"
+}

@@ -1,7 +1,7 @@
 {
   "name": "odoo-by-anthony",
   "interface": {
-    "displayName": "Odoo · Anthony Rodríguez"
+    "displayName": "Odoo Â· Anthony RodrÃ­guez"
   },
   "plugins": [
     {
@@ -11,8 +11,7 @@
         "path": "./submission/odoo"
       },
       "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
+        "installation": "AVAILABLE"
       },
       "category": "Business & Operations"
     }

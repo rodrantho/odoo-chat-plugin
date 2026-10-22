@@ -18,7 +18,7 @@ globalThis.fetch=async(url,opts)=>{if(url.startsWith('https://cloudflare-dns.com
   else if(method==='action_open_wizard')result={type:'ir.actions.act_window',res_model:'helpdesk.test.wizard'};
   else result=method==='create'?777:['write','unlink','action_archive'].includes(method)?true:method==='search_count'?42:[{id:1,display_name:'Prueba'}];
  }return Response.json({result});};
-const origin='https://odoo-personal.rubymouse256.chatgpt.site';
+const origin='https://owner.alpha.com';
 async function req(path,who,body,headers={}){const response=await worker.fetch(new Request(origin+path,{method:body===undefined?'GET':'POST',headers:{...(who?{'oai-authenticated-user-id':who}:{}),...(body!==undefined?{'Origin':origin,'Content-Type':'application/json'}:{}),...headers},...(body!==undefined?{body:JSON.stringify(body)}:{})}),env);return{status:response.status,data:await response.json()};}
 const invoke=async(who,name,args={})=>(await req('/mcp',who,{jsonrpc:'2.0',id:1,method:'tools/call',params:{name,arguments:args}})).data.result;
 assert.equal((await req('/api/connection',null)).status,401);
@@ -63,7 +63,7 @@ posted=calls.at(-1).args;assert.equal(posted[2],'bob-api');assert.equal(posted[6
 assert.equal((await invoke('alice','odoo_post_message',{model:'helpdesk.ticket',record_id:1,body:'Nota',visibility:'internal',partner_ids:[501],user_requested:true,user_approved:true})).isError,true);
 assert.equal((await invoke('alice','odoo_post_message',{model:'helpdesk.ticket',record_id:1,body:'Texto',visibility:'customer',attachment_ids:[701],user_requested:true,user_approved:true})).isError,true);
 assert.equal((await invoke('alice','odoo_post_message',{model:'helpdesk.ticket',record_id:1,body:'Texto',visibility:'customer',reply_to_message_id:801,user_requested:true,user_approved:true})).isError,true);
-const statusInfo=JSON.parse((await invoke('alice','odoo_status')).content[0].text);assert.equal(statusInfo.connector_version,'0.4.1');assert(statusInfo.tool_names.includes('odoo_post_message'));
+const statusInfo=JSON.parse((await invoke('alice','odoo_status')).content[0].text);assert.equal(statusInfo.connector_version,'0.5.0');assert(statusInfo.tool_names.includes('odoo_post_message'));
 assert.equal((await invoke('alice','odoo_create',{model:'mail.message',values:{model:'helpdesk.ticket',res_id:1,body:'Respuesta compatible',subtype_xmlid:'mail.mt_comment',user_approved:true},user_requested:true})).isError,false);
 assert.equal(calls.at(-1).args[4],'message_post');assert.equal(calls.at(-1).args[6].subtype_xmlid,'mail.mt_comment');assert.deepEqual(calls.at(-1).args[6].partner_ids,[501]);
 assert.equal((await invoke('bob','odoo_create',{model:'mail.message',values:{model:'helpdesk.ticket',res_id:1,body:'Nota compatible',subtype_xmlid:'mail.mt_note',user_approved:true},user_requested:true})).isError,false);assert.equal(calls.at(-1).args[2],'bob-api');assert.equal(calls.at(-1).args[6].subtype_xmlid,'mail.mt_note');

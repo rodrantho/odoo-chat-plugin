@@ -1,4 +1,8 @@
-# Public release preparation — 2026-10-21
+# Public release preparation
+
+## Current: 0.5.0 private instance template
+
+The creator rejected a shared service. The GitHub package now supplies an installer skill and sanitized Site template, without mcp.json, App binding or deployed identity. First-use setup creates a separate owner-private Site, database, encryption secret and canonical plugin in the installing user account. Installing the files is not proof that setup ran. Each owner requests their own updates. Prior shared/local release notes below are historical and superseded. See the current README and installation guide. No official-directory submission is in progress.
 
 ## Current direction: account-based remote connection, 0.4.0
 

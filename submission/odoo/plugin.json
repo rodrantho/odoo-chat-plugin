@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "odoo",
-  "version": "0.4.1",
-  "description": "Independent Odoo 17 connector with an authenticated cloud connection, read-only investigation and consent-based follow-up.",
+  "version": "0.5.0",
+  "description": "Template installer for a private Odoo 17 connector in each user own Sites account. No shared MCP endpoint.",
   "author": {
     "name": "Anthony Rodríguez"
   },
@@ -12,7 +12,7 @@
       "interface": {
         "displayName": "Odoo",
         "shortDescription": "Your Odoo, in chat",
-        "longDescription": "Independent Odoo 17 connector by Anthony Rodríguez. Uses an authenticated cloud MCP connection and stores each user connection encrypted and bound to their verified ChatGPT identity in the connector service. Credentials are entered in the hosted configuration form, never in chat or GitHub. No local Node runtime is needed for the remote connection. The provider operates the server; credentials are not stored literally inside a ChatGPT account. Read and prepare requested work autonomously with existing permissions, show replies for approval, and suggest bounded follow-up only with user acceptance and a supported scheduler. Includes a compact read-only ticket change probe. Never post, close tickets or change business records automatically. Free, MIT source; not an official Odoo product. Availability across clients depends on their remote plugin support.",
+        "longDescription": "Independent MIT Odoo 17 template by Anthony Rodríguez. On first use, ask to create your private Odoo instance. The assistant uses Sites to create a separate private Site, storage, encryption secret and canonical plugin in your own account. Enter URL, database, login and API key only in that private instance. The author does not host a shared connector or receive users credentials. Installation supplies a template and instructions; it does not itself create a Site until setup is invoked. Requires Sites and Plugin Creator capabilities for setup. Keep message draft approval, separate closure approval, autonomous read-only investigation and accepted bounded follow-up. No shared MCP server is bundled.",
         "developerName": "Anthony Rodríguez",
         "category": "Business & Operations",
         "defaultPrompt": [
@@ -86,15 +86,16 @@
         }
       },
       "publication": {
-        "release_notes": "Authenticated cloud account connection, autonomous read-only investigation, consent-based bounded follow-up instructions and compact ticket change detection. Each user configures their own connection; external writes and ticket closure still require approval.",
+        "release_notes": "Private instance per installer: packaged Site template and setup workflow; removed shared MCP connection. Each user owns separate Site, storage and encryption secret.",
         "countries": [],
         "translations": {
           "es": {
             "shortDescription": "Tu Odoo, desde el chat",
-            "longDescription": "Conector independiente de Anthony Rodríguez para Odoo 17. Conexión alojada y autenticada, cifrada por identidad de ChatGPT en el servicio del complemento. Las claves no se guardan literalmente dentro de la cuenta de ChatGPT. Investigación de solo lectura y borradores sin confirmaciones intermedias. Sugiere seguimientos acotados y los activa solo tras aceptación y con planificador disponible. Control compacto de novedades. Respuestas, notas y cierres siguen sujetos a aprobación. Gratuito, MIT, no oficial. Compatibilidad entre dispositivos sujeta al cliente."
+            "longDescription": "Plantilla independiente MIT para Odoo 17. Pedí crear tu instancia privada en el primer uso. El asistente crea un sitio y conexión propios en tu cuenta de Sites, sin utilizar el servicio del autor ni copiar conexiones ajenas. Ingresá tus cuatro datos allí. Requiere Sites y Plugin Creator para configurar. Conserva aprobación de respuestas/cierre y seguimiento solo aceptado y acotado. Instalar descarga la plantilla; la creación ocurre al solicitar la configuración."
           }
         }
-      }
+      },
+      "onboardingSkill": "./skills/instalar-odoo/SKILL.md"
     }
   }
 }

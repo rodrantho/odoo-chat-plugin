@@ -1,5 +1,6 @@
 # Política de privacidad de Odoo
 
+> Antecedente histórico de versiones previas. La versión 0.5 usa una instancia privada independiente por instalación: ver [instalación](github-install.md) y [separación de instancias](cloud-connection.md). Este documento no define el servicio actual.
 > Borrador histórico, no política vigente. La versión 0.4 usa [conexión remota por cuenta](cloud-connection.md). Documento de la propuesta inicial de servicio alojado. No describe la distribución local 0.3.0 desde GitHub y no se publica como política vigente. Para la distribución actual consultá [el alcance de seguridad local](local-security.md) y [la instalación](github-install.md): las credenciales pertenecen al perfil Windows, no a la sesión de ChatGPT.
 
 Propuesta del 21 de octubre de 2026 para aprobación del creador; todavía no publicada como política definitiva.

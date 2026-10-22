@@ -1,5 +1,6 @@
 # Condiciones de uso de Odoo
 
+> Antecedente histórico de versiones previas. La versión 0.5 usa una instancia privada independiente por instalación: ver [instalación](github-install.md) y [separación de instancias](cloud-connection.md). Este documento no define el servicio actual.
 > Para la versión 0.4, consultar [la conexión remota](cloud-connection.md) y [el seguimiento](follow-up.md). Borrador histórico de la propuesta inicial de servicio alojado; no son condiciones publicadas para la distribución local 0.3.0 desde GitHub. El software actual se ofrece bajo [MIT](../LICENSE), con [instrucciones de instalación](github-install.md) y [alcance de seguridad local](local-security.md).
 
 Propuesta del 21 de octubre de 2026 para aprobación del creador; todavía no publicada como condiciones definitivas.
