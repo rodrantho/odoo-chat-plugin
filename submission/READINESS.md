@@ -1,5 +1,9 @@
 # Public release preparation — 2026-10-21
 
+## Current direction: account-based remote connection, 0.4.0
+
+The creator requested cross-device account isolation and autonomous read-only investigation with consent-based follow-up. The installable GitHub package now references the verified existing remote MCP endpoint; optional local runtime code is outside that package in local-runtime. See [connection boundaries](../docs/cloud-connection.md) and [follow-up prerequisites](../docs/follow-up.md). A ticket probe returns compact change metadata. It does not create a scheduler, persistent follow-up state or notification channel. No real follow-up is activated by this update. Automated tests use fictional data. The sections below are historical; source, deployment and client authentication must be verified separately. This does not restart the official-directory submission.
+
 ## Current decision: local GitHub distribution, version 0.3.0
 
 The creator chose GitHub distribution and declined to continue publisher verification/billing. No OpenAI public-directory submission is being pursued. The current installable package is `submission/odoo`, registered by `.agents/plugins/marketplace.json`. It runs as a Windows local stdio MCP process with Node.js 24+, four-field loopback settings and DPAPI CurrentUser credential protection. It does not use the historical hosted endpoint below. See [installation](../docs/github-install.md) and [security scope](../docs/local-security.md).

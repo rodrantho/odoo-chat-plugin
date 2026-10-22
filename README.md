@@ -1,40 +1,31 @@
 # Odoo
 
-Independent **Odoo 17** connector by **Anthony Rodríguez**. Free, MIT source. Distributed through this GitHub marketplace for compatible **Windows desktop** clients; requires **Node.js 24+**.
+Independent Odoo 17 connector by Anthony Rodríguez. Free, MIT source. Version 0.4 uses the authenticated **remote connection**; the installed plugin no longer starts a local Windows process.
 
-## Install from GitHub
+## Connect
 
-Add `https://github.com/rodrantho/odoo-chat-plugin` as a GitHub marketplace source, then install **Odoo** from **Odoo · Anthony Rodríguez**. Codex CLI equivalents:
+Use the Odoo account plugin or add this repository as a GitHub marketplace in a compatible client:
 
 ```
 codex plugin marketplace add rodrantho/odoo-chat-plugin --ref main
 codex plugin add odoo@odoo-by-anthony
 ```
 
-Start a new chat and ask to check your **local Odoo connection**. Open the returned `127.0.0.1` link and enter your own public HTTPS server URL, database, Odoo login and API key in that local form. Never paste API keys in chat.
+Connect/authenticate the remote MCP when prompted. Ask to check your Odoo connection and open the HTTPS settings link. Enter your own server URL, database, login and API key there, never in chat. No Node runtime is required for this remote plugin. Cross-device availability depends on the client's remote plugin support and authenticated connection; GitHub installation alone does not publish it in the OpenAI Directory or install it on every device.
 
-See the [step-by-step installation guide](docs/github-install.md) (Spanish).
+The connector service stores each connection encrypted and bound to the verified ChatGPT identity supplied by Sites. Credentials are not literally stored inside a ChatGPT account. The service operator controls the hosting and encryption secret; this is not end-to-end encryption against that operator. Queried records returned to chat are processed by ChatGPT/Codex and Odoo normally. See [connection/security](docs/cloud-connection.md).
 
-## How it works
+## Work with fewer interruptions
 
-The plugin launches a local MCP process on the user PC. It connects directly to the configured Odoo 17 server with that account permissions. Credentials are stored outside the repository, protected for the Windows user with DPAPI. There is no shared connector service or credential database. The previous hosted development endpoint is not used by the GitHub package.
+- Read the records and references needed to resolve the requested task, compare results and prepare a complete reply without asking permission for every read.
+- Other applications require their own authorized connections. This connector does not grant Google Workspace administration access.
+- Show customer replies/internal notes, recipients, visibility and attachments for approval before posting. Propose ticket closure for separate approval. Never send or close automatically during follow-up.
+- Suggest a concrete follow-up when waiting for a response or result. Activate it only after acceptance and verification of a scheduler, personal connection, persistent checkpoint and notification path.
+- A compact read-only ticket probe returns a fingerprint and changed:false without history when unchanged. It does not itself schedule jobs or send alerts. Assistant schedules can still consume tokens; no zero-cost claim.
 
-ChatGPT account sign-in does not store or synchronize this local credential file. Each PC/Windows profile needs its own configuration. Record data returned in chat is still processed by the chat service and Odoo normally.
+See [bounded follow-up](docs/follow-up.md) and [installation](docs/github-install.md).
 
-People using the same Windows profile share that profile's local Odoo connection even when they switch ChatGPT accounts. Use separate Windows profiles, or disconnect Odoo before sharing the profile.
-
-## Features
-
-- Fourteen tools: models/fields, search/read/count/group, ticket history, customer replies, internal notes, create/update/delete and public business actions.
-- Explicit user requests for changes. Show the complete message draft, recipients, visibility and attachments; wait for explicit approval before posting.
-- Propose ticket closure when supported by evidence and wait for approval of that state change. Approving a reply alone never authorizes closure.
-- Discover business methods, complete returned wizards and read back results. Posting does not prove email delivery.
-- No credential/permission administration, server code execution or privilege escalation. Odoo retains its permission checks.
-- Public HTTPS destinations only, no redirects or private network targets. Local settings listen only on `127.0.0.1` behind a random per-process path, with same-origin write checks.
-
-## Development and verification
-
-From the repository root:
+## Development
 
 ```
 node scripts/build.mjs
@@ -44,8 +35,6 @@ node scripts/test-local.mjs
 node scripts/test-stdio.mjs
 ```
 
-The tests use fictional data, mocked Odoo servers and temporary encrypted configuration. They cover business tools, ownership/isolation, approved messages, destination restrictions, DPAPI persistence, local HTTP controls, real child-process MCP startup/discovery and clean shutdown. They do not prove every Odoo module/customization or real email delivery.
+Fictional-data tests cover separate user connections, encrypted ownership, network restrictions, business operations, approved messages and read-only compact change detection. The optional Windows development harness is retained in local-runtime; it is not part of the installed remote package. It stores configuration by Windows profile and does not provide account synchronization. No production writes, real customer notifications or full Odoo demo instance are claimed by these tests.
 
-`submission/odoo` is the installable local plugin directory used by the GitHub marketplace. The retained `worker/`, database migration and `.openai/` sources describe the earlier hosted development implementation; they are not deployed or used by this local package. `submission/READINESS.md` records the historical hosted work and the change to GitHub distribution. No public-directory submission is being pursued at present.
-
-Support: **anthony@nst-group.com**. Not an official Odoo product. Source under the [MIT License](LICENSE).
+Support: anthony@nst-group.com. Not an official Odoo product. Source under [MIT](LICENSE).

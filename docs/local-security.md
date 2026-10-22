@@ -1,5 +1,7 @@
 # Alcance de seguridad de la versión local
 
+> Referencia histórica de la versión local 0.3 y del arnés opcional de desarrollo. El paquete instalado 0.4 utiliza [la conexión remota por cuenta](cloud-connection.md).
+
 - La configuración pertenece al perfil Windows de quien instala. DPAPI CurrentUser protege el archivo local; otro perfil Windows no puede abrirlo con su propia identidad. Una persona que controle tu sesión Windows o tu equipo puede comprometer tus datos: esto no es una garantía de seguridad absoluta.
 - Cambiar de cuenta ChatGPT dentro del mismo perfil Windows no cambia automáticamente la conexión Odoo local. Esta versión separa perfiles Windows; no autentica identidades ChatGPT en el servidor local. Desconectá Odoo al compartir un perfil o utilizá perfiles Windows diferentes.
 - La clave API se introduce en un formulario local y se utiliza para autenticar contra tu servidor Odoo. No se devuelve al modelo ni se guarda dentro del repositorio. La interfaz de herramientas nunca recibe la clave como argumento.

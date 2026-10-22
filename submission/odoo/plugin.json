@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "odoo",
-  "version": "0.3.0",
-  "description": "Independent local Odoo 17 connector for Windows desktop. Each user supplies and protects their own connection.",
+  "version": "0.4.0",
+  "description": "Independent Odoo 17 connector with an authenticated cloud connection, read-only investigation and consent-based follow-up.",
   "author": {
     "name": "Anthony Rodríguez"
   },
@@ -12,7 +12,7 @@
       "interface": {
         "displayName": "Odoo",
         "shortDescription": "Your Odoo, in chat",
-        "longDescription": "Independent Odoo 17 connector by Anthony Rodríguez for compatible Windows desktop clients. Requires Node.js 24 or later. Runs locally on the user PC and connects directly to the public HTTPS Odoo server they configure. Enter server URL, database, login and API key in a private 127.0.0.1 form. Credentials are protected for the Windows user with DPAPI; there is no shared connector service or credential database. Search records, read ticket history and perform explicitly requested create/update/delete and business actions with existing Odoo permissions. Show customer replies/internal notes for explicit draft approval before posting. Propose ticket closure for separate explicit approval. Posting does not prove email delivery. Data returned in chat is processed by the chat service normally. No credential administration or privilege escalation. Free, MIT source. Not an official Odoo product.",
+        "longDescription": "Independent Odoo 17 connector by Anthony Rodríguez. Uses an authenticated cloud MCP connection and stores each user connection encrypted and bound to their verified ChatGPT identity in the connector service. Credentials are entered in the hosted configuration form, never in chat or GitHub. No local Node runtime is needed for the remote connection. The provider operates the server; credentials are not stored literally inside a ChatGPT account. Read and prepare requested work autonomously with existing permissions, show replies for approval, and suggest bounded follow-up only with user acceptance and a supported scheduler. Includes a compact read-only ticket change probe. Never post, close tickets or change business records automatically. Free, MIT source; not an official Odoo product. Availability across clients depends on their remote plugin support.",
         "developerName": "Anthony Rodríguez",
         "category": "Business & Operations",
         "defaultPrompt": [
@@ -86,12 +86,12 @@
         }
       },
       "publication": {
-        "release_notes": "GitHub desktop distribution for Windows, Node.js 24+, local MCP execution, per-user DPAPI-protected configuration, 14 Odoo tools, explicit draft approval and separate ticket-closure approval. Does not use the previous hosted connector.",
+        "release_notes": "Authenticated cloud account connection, autonomous read-only investigation, consent-based bounded follow-up instructions and compact ticket change detection. Each user configures their own connection; external writes and ticket closure still require approval.",
         "countries": [],
         "translations": {
           "es": {
             "shortDescription": "Tu Odoo, desde el chat",
-            "longDescription": "Conector independiente de Anthony Rodríguez para Odoo 17, Windows y Node.js 24 o posterior. Se ejecuta en la PC de cada persona y conecta directamente a su Odoo HTTPS público. URL, base, usuario y clave se ingresan en un formulario 127.0.0.1; Windows DPAPI protege la conexión para ese usuario. Consultas e historial; creación, edición, eliminación y acciones a pedido con los permisos existentes. Muestra respuestas/notas para aprobar antes de publicar y propone el cierre del ticket para aprobación separada. Los datos que aparecen en el chat se procesan normalmente por ChatGPT/Codex. Gratuito, código MIT, no oficial de Odoo."
+            "longDescription": "Conector independiente de Anthony Rodríguez para Odoo 17. Conexión alojada y autenticada, cifrada por identidad de ChatGPT en el servicio del complemento. Las claves no se guardan literalmente dentro de la cuenta de ChatGPT. Investigación de solo lectura y borradores sin confirmaciones intermedias. Sugiere seguimientos acotados y los activa solo tras aceptación y con planificador disponible. Control compacto de novedades. Respuestas, notas y cierres siguen sujetos a aprobación. Gratuito, MIT, no oficial. Compatibilidad entre dispositivos sujeta al cliente."
           }
         }
       }

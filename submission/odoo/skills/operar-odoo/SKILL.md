@@ -5,7 +5,7 @@ description: Usar Odoo para consultar, gestionar y responder tickets, publicar n
 
 # Operar Odoo
 
-Usar Odoo desde el catálogo GitHub. Su proceso MCP se ejecuta localmente en Windows y conecta directamente a la instancia del usuario. Cada persona configura URL, base, usuario y clave API en el formulario 127.0.0.1 que devuelve odoo_status. La clave se protege mediante Windows DPAPI y nunca se pide por chat. Verificar execution local-windows y connector_version 0.3.0 o posterior. No usar el antiguo servicio alojado.
+Usar la conexión alojada personal del usuario. Cada persona configura URL, base, usuario y clave API en el formulario HTTPS que devuelve odoo_status. El servicio conserva la conexión cifrada por identidad autenticada de ChatGPT; no se guarda literalmente dentro de la cuenta de ChatGPT. Nunca pedir claves por chat. La compatibilidad entre dispositivos depende del cliente y su conexión remota. Verificar la versión real del servidor antes de anunciar capacidades nuevas.
 
 ## Identidad y autorización
 
@@ -45,3 +45,25 @@ Las herramientas existentes permiten buscar, leer, contar, agrupar, crear y edit
 ## Resolver y cerrar
 
 Si el historial y los resultados indican que la incidencia fue solucionada, proponer cerrar/resolver el ticket con una explicación breve. Mostrar el estado destino real descubierto en Odoo. La aprobación de una respuesta no autoriza el cierre: pedir aprobación explícita del cierre, que puede incluirse junto al borrador. Ejecutar solamente lo aprobado; leer de nuevo el ticket para comprobar su estado final. Si la solución es incierta o faltan datos, mantener abierto y explicarlo.
+
+## Resolver consultas sin interrupciones
+
+El pedido de resolver o investigar autoriza las lecturas necesarias dentro de ese objetivo. Resolver IDs, consultar historial, buscar referencias, comparar resultados y preparar un borrador sin pedir permiso para cada lectura. Usar los conectores que el usuario ya tenga autorizados y respetar sus límites. Odoo no da acceso a Google Workspace: una lista de miembros requiere un conector con permisos reales para ese grupo. Si falta, describir ese acceso concreto, sin inventar miembros ni pedir claves por chat. Preparar la respuesta completa y pedir aprobación únicamente antes de su publicación; no crear notas, cambiar estados ni modificar otros sistemas durante la investigación.
+
+## Seguimiento sugerido, aceptado y acotado
+
+Cuando haya una espera concreta (respuesta del cliente, prueba solicitada o dependencia), sugerir un seguimiento útil. Mostrar ticket, qué cambio se busca, frecuencia, duración o fecha final, máximo de controles y acciones permitidas. Por ejemplo: control cada dos horas durante 72 horas, solo lectura y aviso ante novedades. Es una propuesta, nunca una tarea ya activa.
+
+Aceptar el seguimiento no autoriza mensajes, notas, cambios de estado, cierres ni otras escrituras en Odoo o aplicaciones externas. Las acciones automáticas permitidas son consultar, comparar, resumir novedades y preparar un borrador. Mostrar ese borrador y esperar aprobación antes de enviarlo. Proponer cerrar por separado cuando la evidencia lo justifique.
+
+Solo después de la aceptación, comprobar que existe un planificador compatible, que puede usar la conexión personal del usuario sin la PC encendida y que conserva el estado entre ejecuciones. Usar las herramientas de tareas/automatización disponibles del cliente. Reutilizar un seguimiento del mismo ticket; no duplicar ni reactivar uno pausado sin pedido. Confirmar que la tarea quedó guardada y su frecuencia/vencimiento. Si falta alguna capacidad, no decir que se activó: explicar el requisito concreto. Este complemento no incluye un temporizador propio ni envía notificaciones por sí mismo.
+
+Para cada control usar odoo_ticket_probe si aparece. Guardar la huella inicial y la última huella correcta en el estado persistente autorizado de la tarea, ligado al usuario y al ticket. Si no está expuesta, usar búsquedas acotadas de id/date y estado, sin todo el historial. No usar una huella compartida entre usuarios. Sin persistencia disponible, no prometer deduplicación ni activar un seguimiento que la requiera.
+
+Sin cambios, finalizar sin leer cuerpos, redactar informes o avisar. Si cambió, leer solo los mensajes nuevos necesarios (hasta diez por página y un máximo acordado de consultas); comprobar autor y visibilidad. Un cambio puede ser una nota interna: no afirmar respuesta del cliente por la sola huella. Preparar un resumen breve o borrador; avisar una sola vez por novedad y conservar la huella después de procesarla correctamente. Si hay demasiados cambios para el límite, avisar que requiere revisión en vez de ampliar el alcance.
+
+Mantener intervalos y fecha final aceptados; respetar pausas y cancelaciones. Vencer al alcanzar la fecha o máximo de controles. Si se revoca acceso o falla autenticación, suspender y solicitar reconexión, sin reintentos frecuentes. No considerar ausencia de respuesta como resolución ni cerrar automáticamente. Al detectar un estado final, proponer detener el seguimiento y no cambiar Odoo.
+
+Minimizar datos y contexto: campos explícitos, filtros por ticket y últimos IDs, sin adjuntos innecesarios ni búsquedas globales. Proponer como máximo tres consultas de negocio por control, aumentar solo con aprobación. No invocar un modelo por cada registro. Las automatizaciones del asistente pueden consumir tokens aunque no haya novedades; no prometer coste cero ni un presupuesto garantizado. Un comprobador de eventos sin modelo requiere infraestructura adicional verificada.
+
+Consultar [la guía de seguimiento](references/seguimiento.md) antes de preparar una tarea.

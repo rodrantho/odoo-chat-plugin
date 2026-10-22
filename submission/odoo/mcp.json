@@ -1,13 +1,9 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
-    "odoo-local": {
-      "type": "stdio",
-      "command": "node",
-      "args": [
-        "${PLUGIN_ROOT}/server.mjs"
-      ],
-      "cwd": "${PLUGIN_ROOT}"
+    "odoo": {
+      "type": "streamable-http",
+      "url": "https://odoo-personal.rubymouse256.chatgpt.site/mcp"
     }
   }
 }

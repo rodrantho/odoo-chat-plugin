@@ -1,50 +1,29 @@
-# Instalar Odoo desde GitHub
+# Instalar y conectar Odoo
 
-Conector independiente de Anthony Rodríguez. Gratuito, código MIT. Esta versión funciona en **Windows**, con **Node.js 24 o posterior**, desde clientes de escritorio compatibles con complementos locales. No se instala como aplicación web/móvil ni aparece por ello en el catálogo oficial de OpenAI.
+Versión 0.4: conector remoto de Odoo 17, independiente y MIT. No requiere Node.js ni guardar claves en esta PC. La compatibilidad depende del cliente y su soporte de complementos remotos; GitHub no publica el complemento en el directorio oficial.
 
-## Instalar
-
-1. Tené instalado Node.js 24 o posterior desde [nodejs.org](https://nodejs.org/).
-2. Agregá `https://github.com/rodrantho/odoo-chat-plugin` como marketplace de GitHub en tu cliente de escritorio. Si usás Codex CLI, el comando equivalente es:
+1. En un cliente compatible, agregá https://github.com/rodrantho/odoo-chat-plugin como marketplace de GitHub e instalá Odoo desde Odoo · Anthony Rodríguez. Equivalentes de Codex CLI:
 
 ```
 codex plugin marketplace add rodrantho/odoo-chat-plugin --ref main
-```
-
-3. En el catálogo **Odoo · Anthony Rodríguez**, instalá **Odoo**. Desde la terminal también se puede usar:
-
-```
 codex plugin add odoo@odoo-by-anthony
 ```
 
-4. Abrí un chat nuevo y pedí: **Revisá mi conexión local de Odoo**.
-5. Abrí el enlace `127.0.0.1` devuelto por el estado. Es una página de tu propia PC, con puerto y ruta aleatorios por proceso. Ingresá allí URL HTTPS de Odoo 17, base de datos, usuario y clave API. Nunca pegues la clave en el chat.
-6. Pulsá **Comprobar y guardar**. El conector comprueba la versión y la cuenta antes de guardar. Volvé al chat y pedí revisar la conexión.
+2. Conectá/autenticá el servidor remoto cuando el cliente lo solicite. El complemento Odoo vinculado a la cuenta utiliza el mismo servicio.
+3. Abrí un chat nuevo y pedí comprobar la conexión Odoo.
+4. Abrí el enlace HTTPS de configuración devuelto. Ingresá tu propia URL HTTPS pública de Odoo 17, base, usuario y clave API. Nunca pegues la clave en el chat.
+5. Comprobá y guardá. Volvé al chat y consultá el estado. En otro dispositivo, usá la misma cuenta y una superficie compatible; comprobá allí su conexión antes de asumir que funciona.
 
-## Dónde quedan los datos
+Si venís de la versión local, no se sube ni migra automáticamente su archivo de credenciales. Configurá la nueva conexión explícitamente. Cambiar a otra persona requiere su propia identidad de ChatGPT y su cuenta Odoo.
 
-GitHub entrega los archivos y las instrucciones del complemento. El cliente inicia un proceso local que conecta directamente con el Odoo elegido. La configuración queda en el perfil de Windows, protegida con **DPAPI para ese usuario**, fuera del repositorio. No se usa el servicio alojado anterior ni una base compartida de credenciales.
+[Ubicación de claves y aislamiento](cloud-connection.md). [Seguimientos con consentimiento](follow-up.md).
 
-La cuenta de ChatGPT no guarda automáticamente esa clave ni sincroniza este archivo entre equipos. Al cambiar de PC o de usuario Windows hay que configurar nuevamente la conexión. Cada persona debe usar su propia cuenta Odoo. Los datos que se consultan y aparecen en el chat sí se procesan normalmente por ChatGPT/Codex y Odoo, según esos servicios.
-
-Si varias personas usan el mismo perfil Windows, comparten el acceso a la conexión local de ese perfil, incluso si cambian de cuenta ChatGPT. Para separarlas, usen perfiles Windows distintos o desconecten la cuenta Odoo al terminar. La separación de esta versión es por perfil Windows, no por cuenta ChatGPT.
-
-Solo se admiten servidores Odoo 17 con HTTPS público y acceso a API externa. Se rechazan destinos de redes privadas, credenciales dentro de la URL y redirecciones. El navegador local escucha únicamente en `127.0.0.1`.
-
-## Respuestas y cambios
-
-Hay 14 herramientas para consultas, historial, respuestas/notas y cambios de negocio. Antes de publicar una respuesta o nota, el asistente muestra texto, destinatarios, visibilidad y adjuntos y espera aprobación explícita. Si considera resuelto un ticket, propone su cierre para aprobación separada. Aprobar una respuesta no autoriza cerrar el ticket. Publicar un mensaje no confirma recepción del correo.
-
-## Actualizar o quitar
+Para actualizar el catálogo:
 
 ```
 codex plugin marketplace upgrade odoo-by-anthony
 ```
 
-Actualizá Odoo desde el cliente y abrí un chat nuevo. Para quitar la conexión guardada, usá **Desconectar mi cuenta** en su formulario local. Esto no revoca la clave en Odoo ni borra mensajes o cambios anteriores. La desinstalación tampoco sustituye la revocación de la clave cuando corresponda.
+Actualizá el complemento desde el cliente y abrí un chat nuevo. Para eliminar su conexión activa, usá Desconectar mi cuenta en la configuración HTTPS; para revocar la clave, hacelo también en Odoo. Desinstalar no equivale a revocar ni borrar operaciones anteriores.
 
-## Estado comprobado
-
-Pruebas con datos ficticios: configuración de cuatro campos, DPAPI, persistencia/reinicio, loopback y rechazo CSRF, descubrimiento de 14 herramientas y publicación simulada solo con aprobación. No se afirma validación contra todos los módulos o personalizaciones de Odoo ni entrega real de correo.
-
-Soporte: anthony@nst-group.com. No envíes claves ni datos de clientes en reportes públicos.
+Soporte: anthony@nst-group.com. Reportes sin claves ni datos de clientes.

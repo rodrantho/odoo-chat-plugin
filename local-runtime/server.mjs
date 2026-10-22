@@ -41,8 +41,8 @@ export async function startLocal({file=join(process.env.LOCALAPPDATA||join(proce
  origin='http://127.0.0.1:'+server.address().port;setup=origin+'/'+token+'/';server.unref();
  async function dispatch(message){if(!message||message.jsonrpc!=='2.0')return{jsonrpc:'2.0',id:message?.id??null,error:{code:-32600,message:'Solicitud inválida'}};if(message.id===undefined)return null;
   try{const response=await worker.fetch(new Request(origin+'/mcp',{method:'POST',headers:{'Content-Type':'application/json','oai-authenticated-user-id':userId},body:JSON.stringify(message)}),env);const result=redactSetup(await response.json(),setup);
-   if(message.method==='initialize'&&result.result){result.result.serverInfo={name:'odoo-local',version:'0.3.0'};result.result.instructions+=' El servidor se ejecuta en este equipo Windows. Configurar la clave solo en el formulario 127.0.0.1; nunca por chat. No usar el antiguo complemento alojado en Sites.';}
-   if(message.method==='tools/call'&&message.params?.name==='odoo_status'&&!result.result?.isError){const content=result.result.content?.find(c=>c.type==='text');if(content){const status=JSON.parse(content.text);status.execution='local-windows';status.connector_version='0.3.0';status.setup_url=setup;content.text=JSON.stringify(status);}}
+   if(message.method==='initialize'&&result.result){result.result.serverInfo={name:'odoo-local',version:'0.4.0'};result.result.instructions+=' El servidor se ejecuta en este equipo Windows. Configurar la clave solo en el formulario 127.0.0.1; nunca por chat. No usar el antiguo complemento alojado en Sites.';}
+   if(message.method==='tools/call'&&message.params?.name==='odoo_status'&&!result.result?.isError){const content=result.result.content?.find(c=>c.type==='text');if(content){const status=JSON.parse(content.text);status.execution='local-windows';status.connector_version='0.4.0';status.setup_url=setup;content.text=JSON.stringify(status);}}
    return result;
   }catch{return{jsonrpc:'2.0',id:message.id,error:{code:-32603,message:'Error del conector local.'}};}}
  return{server,setup,origin,dispatch,close:()=>new Promise(resolve=>server.close(resolve))};
